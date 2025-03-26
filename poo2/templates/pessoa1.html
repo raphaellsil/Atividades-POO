@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Clínica Veterinária</title>
+    <link rel="stylesheet" href="pessoa2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Clínica Veterinária</h1>
+
+        <div class="section">
+            <h2>Cadastro de Animal</h2>
+            <div class="form-group">
+                <label for="animal_nome">Nome do animal:</label>
+                <input type="text" id="animal_nome" required>
+            </div>
+            <div class="form-group">
+                <label for="animal_sexo">Sexo do animal:</label>
+                <select id="animal_sexo" required>
+                    <option value="M">Macho</option>
+                    <option value="F">Fêmea</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="animal_peso">Peso do animal (kg):</label>
+                <input type="number" id="animal_peso" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="animal_especie">Espécie do animal:</label>
+                <input type="text" id="animal_especie" required>
+            </div>
+            <div class="form-group">
+                <label for="animal_raca">Raça do animal:</label>
+                <input type="text" id="animal_raca" required>
+            </div>
+            <div class="form-group">
+                <label for="animal_data_nascimento">Data de nascimento:</label>
+                <input type="date" id="animal_data_nascimento" required>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Cadastro de Cliente</h2>
+            <div class="form-group">
+                <label for="cliente_nome">Nome do cliente:</label>
+                <input type="text" id="cliente_nome" required>
+            </div>
+            <div class="form-group">
+                <label for="cliente_telefone">Telefone:</label>
+                <input type="tel" id="cliente_telefone" required>
+            </div>
+            <div class="form-group">
+                <label for="cliente_email">Email:</label>
+                <input type="email" id="cliente_email" required>
+            </div>
+            <div class="form-group">
+                <label for="cliente_endereco">Endereço:</label>
+                <input type="text" id="cliente_endereco" required>
+            </div>
+            <div class="form-group">
+                <label for="cliente_cpf">CPF:</label>
+                <input type="text" id="cliente_cpf" required>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="cliente_status"> Está inadimplente?
+                </label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Cadastro de Médico</h2>
+            <div class="form-group">
+                <label for="medico_nome">Nome do médico:</label>
+                <input type="text" id="medico_nome" required>
+            </div>
+            <div class="form-group">
+                <label for="medico_telefone">Telefone:</label>
+                <input type="tel" id="medico_telefone" required>
+            </div>
+            <div class="form-group">
+                <label for="medico_email">Email:</label>
+                <input type="email" id="medico_email" required>
+            </div>
+            <div class="form-group">
+                <label for="medico_endereco">Endereço:</label>
+                <input type="text" id="medico_endereco" required>
+            </div>
+            <div class="form-group">
+                <label for="medico_cpf">CPF:</label>
+                <input type="text" id="medico_cpf" required>
+            </div>
+            <div class="form-group">
+                <label for="medico_registro">Registro profissional:</label>
+                <input type="text" id="medico_registro" required>
+            </div>
+            <div class="form-group">
+                <label for="medico_especialidade">Especialidade:</label>
+                <input type="text" id="medico_especialidade" required>
+            </div>
+            <div class="form-group">
+                <label for="medico_carga_horaria">Carga horária semanal:</label>
+                <input type="number" id="medico_carga_horaria" required>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Cadastro de Funcionário</h2>
+            <div class="form-group">
+                <label for="funcionario_nome">Nome do funcionário:</label>
+                <input type="text" id="funcionario_nome" required>
+            </div>
+            <div class="form-group">
+                <label for="funcionario_telefone">Telefone:</label>
+                <input type="tel" id="funcionario_telefone" required>
+            </div>
+            <div class="form-group">
+                <label for="funcionario_email">Email:</label>
+                <input type="email" id="funcionario_email" required>
+            </div>
+            <div class="form-group">
+                <label for="funcionario_endereco">Endereço:</label>
+                <input type="text" id="funcionario_endereco" required>
+            </div>
+            <div class="form-group">
+                <label for="funcionario_cpf">CPF:</label>
+                <input type="text" id="funcionario_cpf" required>
+            </div>
+            <div class="form-group">
+                <label for="funcionario_carga_horaria">Carga horária semanal:</label>
+                <input type="number" id="funcionario_carga_horaria" required>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="funcionario_sindicalizado"> Sindicalizado?
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="funcionario_funcao">Função:</label>
+                <input type="text" id="funcionario_funcao" required>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Agendamento da Consulta</h2>
+            <div class="form-group">
+                <label for="data_agendamento">Data do agendamento:</label>
+                <input type="date" id="data_agendamento" required>
+            </div>
+            <div class="form-group">
+                <label for="valor_agendamento">Valor da consulta:</label>
+                <input type="number" id="valor_agendamento" step="0.01" required>
+            </div>
+            <button id="agendar">Agendar Consulta</button>
+            <div id="agendamento-message" class="success-message" style="display: none;"></div>
+        </div>
+
+        <div class="section">
+            <h2>Finalizar Consulta</h2>
+            <button id="finalizar">Finalizar Consulta</button>
+            <div id="finalizacao-message" class="success-message" style="display: none;"></div>
+        </div>
+
+        <div id="resumo-consulta" class="section" style="display: none;">
+            <h2>Resumo da Consulta</h2>
+            <p id="resumo-texto"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('agendar').addEventListener('click', function() {
+            document.getElementById('agendamento-message').style.display = 'block';
+            document.getElementById('agendamento-message').textContent = 'Agendamento realizado com sucesso';
+        });
+
+        document.getElementById('finalizar').addEventListener('click', function() {
+            const animalNome = document.getElementById('animal_nome').value || '[Nome do Animal]';
+            const clienteNome = document.getElementById('cliente_nome').value || '[Nome do Cliente]';
+            const medicoNome = document.getElementById('medico_nome').value || '[Nome do Médico]';
+            const funcionarioNome = document.getElementById('funcionario_nome').value || '[Nome do Funcionário]';
+
+            document.getElementById('finalizacao-message').style.display = 'block';
+            document.getElementById('finalizacao-message').textContent = 'Consulta concluída com sucesso';
+
+            document.getElementById('resumo-consulta').style.display = 'block';
+            document.getElementById('resumo-texto').textContent =
+                `O animal de nome ${animalNome}, dono de nome ${clienteNome}, ` +
+                `concluiu uma consulta com o médico de nome ${medicoNome}, ` +
+                `conforme registrado pelo funcionário de nome ${funcionarioNome}.`;
+        });
+    </script>
+</body>
+</html>
