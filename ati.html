@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Clínica Veterinária</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #resultado {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f4fc;
+            border-radius: 4px;
+            display: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Clínica Veterinária</h1>
+    
+    <!-- ============================================ -->
+    <!-- SEÇÃO 1: CADASTRO DE ANIMAL -->
+    <!-- ============================================ -->
+    <div class="section">
+        <h2>Cadastro de Animal</h2>
+        <form id="animalForm">
+            <div>
+                <label for="animalNome">Nome do Animal:</label>
+                <input type="text" id="animalNome" required>
+            </div>
+            <div>
+                <label for="animalSexo">Sexo:</label>
+                <select id="animalSexo" required>
+                    <option value="">Selecione</option>
+                    <option value="Macho">Macho</option>
+                    <option value="Fêmea">Fêmea</option>
+                </select>
+            </div>
+            <div>
+                <label for="animalPeso">Peso (kg):</label>
+                <input type="number" id="animalPeso" step="0.1" required>
+            </div>
+            <div>
+                <label for="animalEspecie">Espécie:</label>
+                <input type="text" id="animalEspecie" required>
+            </div>
+            <div>
+                <label for="animalRaca">Raça:</label>
+                <input type="text" id="animalRaca" required>
+            </div>
+            <div>
+                <label for="animalNascimento">Data de Nascimento:</label>
+                <input type="date" id="animalNascimento" required>
+            </div>
+            <div class="full-width">
+                <button type="submit">Cadastrar Animal</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SEÇÃO 2: CADASTRO DE CLIENTE -->
+    <!-- ============================================ -->
+    <div class="section">
+        <h2>Cadastro de Cliente</h2>
+        <form id="clienteForm">
+            <div>
+                <label for="clienteNome">Nome:</label>
+                <input type="text" id="clienteNome" required>
+            </div>
+            <div>
+                <label for="clienteTelefone">Telefone:</label>
+                <input type="tel" id="clienteTelefone" required>
+            </div>
+            <div>
+                <label for="clienteEmail">Email:</label>
+                <input type="email" id="clienteEmail" required>
+            </div>
+            <div>
+                <label for="clienteEndereco">Endereço:</label>
+                <input type="text" id="clienteEndereco" required>
+            </div>
+            <div>
+                <label for="clienteCPF">CPF:</label>
+                <input type="text" id="clienteCPF" required>
+            </div>
+            <div>
+                <label for="clienteAnimal">Animal (selecionar):</label>
+                <select id="clienteAnimal" required>
+                    <option value="">Selecione um animal cadastrado</option>
+                </select>
+            </div>
+            <div class="full-width">
+                <button type="submit">Cadastrar Cliente</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SEÇÃO 3: CADASTRO DE MÉDICO -->
+    <!-- ============================================ -->
+    <div class="section">
+        <h2>Cadastro de Médico</h2>
+        <form id="medicoForm">
+            <div>
+                <label for="medicoNome">Nome:</label>
+                <input type="text" id="medicoNome" required>
+            </div>
+            <div>
+                <label for="medicoTelefone">Telefone:</label>
+                <input type="tel" id="medicoTelefone" required>
+            </div>
+            <div>
+                <label for="medicoEmail">Email:</label>
+                <input type="email" id="medicoEmail" required>
+            </div>
+            <div>
+                <label for="medicoEndereco">Endereço:</label>
+                <input type="text" id="medicoEndereco" required>
+            </div>
+            <div>
+                <label for="medicoCPF">CPF:</label>
+                <input type="text" id="medicoCPF" required>
+            </div>
+            <div>
+                <label for="medicoRegistro">Registro Profissional:</label>
+                <input type="text" id="medicoRegistro" required>
+            </div>
+            <div>
+                <label for="medicoEspecialidade">Especialidade:</label>
+                <input type="text" id="medicoEspecialidade" required>
+            </div>
+            <div>
+                <label for="medicoCargaHoraria">Carga Horária Semanal:</label>
+                <input type="number" id="medicoCargaHoraria" required>
+            </div>
+            <div class="full-width">
+                <button type="submit">Cadastrar Médico</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SEÇÃO 4: AGENDAMENTO DE CONSULTA -->
+    <!-- ============================================ -->
+    <div class="section">
+        <h2>Agendamento de Consulta</h2>
+        <form id="agendamentoForm">
+            <div>
+                <label for="agendamentoData">Data:</label>
+                <input type="datetime-local" id="agendamentoData" required>
+            </div>
+            <div>
+                <label for="agendamentoMedico">Médico:</label>
+                <select id="agendamentoMedico" required>
+                    <option value="">Selecione um médico</option>
+                </select>
+            </div>
+            <div>
+                <label for="agendamentoCliente">Cliente:</label>
+                <select id="agendamentoCliente" required>
+                    <option value="">Selecione um cliente</option>
+                </select>
+            </div>
+            <div>
+                <label for="agendamentoValor">Valor (R$):</label>
+                <input type="number" id="agendamentoValor" step="0.01" required>
+            </div>
+            <div class="full-width">
+                <button type="submit">Agendar Consulta</button>
+            </div>
+        </form>
+        <div id="resultado"></div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SEÇÃO 5: LISTAGEM DE CONSULTAS -->
+    <!-- ============================================ -->
+    <div class="section">
+        <h2>Consultas Agendadas</h2>
+        <table id="consultasTable">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Médico</th>
+                    <th>Cliente</th>
+                    <th>Animal</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+        // ============================================
+        // CLASSES DO SISTEMA
+        // ============================================
+
+        /**
+         * Classe Animal representa um animal de estimação
+         * @param {string} nome - Nome do animal
+         * @param {string} sexo - Sexo (Macho/Fêmea)
+         * @param {number} peso - Peso em kg
+         * @param {string} especie - Espécie do animal
+         * @param {string} raca - Raça do animal
+         * @param {string} dataNascimento - Data de nascimento
+         */
+        class Animal {
+            constructor(nome, sexo, peso, especie, raca, dataNascimento) {
+                this.nome = nome;
+                this.sexo = sexo;
+                this.peso = peso;
+                this.especie = especie;
+                this.raca = raca;
+                this.dataNascimento = dataNascimento;
+            }
+        }
+
+        /**
+         * Classe base Pessoa com dados comuns
+         * @param {string} nome - Nome completo
+         * @param {string} telefone - Número de telefone
+         * @param {string} email - Endereço de email
+         * @param {string} endereco - Endereço completo
+         * @param {string} cpf - CPF
+         */
+        class Pessoa {
+            constructor(nome, telefone, email, endereco, cpf) {
+                this.nome = nome;
+                this.telefone = telefone;
+                this.email = email;
+                this.endereco = endereco;
+                this.cpf = cpf;
+            }
+        }
+
+        /**
+         * Classe Medico herda de Pessoa e adiciona atributos profissionais
+         * @param {string} registroProfissional - Número do registro profissional
+         * @param {string} especialidade - Especialidade médica
+         * @param {number} cargaHorariaSemanal - Carga horária semanal
+         */
+        class Medico extends Pessoa {
+            constructor(nome, telefone, email, endereco, cpf, registroProfissional, especialidade, cargaHorariaSemanal) {
+                super(nome, telefone, email, endereco, cpf);
+                this.registroProfissional = registroProfissional;
+                this.especialidade = especialidade;
+                this.cargaHorariaSemanal = cargaHorariaSemanal;
+            }
+        }
+
+        /**
+         * Classe Cliente herda de Pessoa e associa um Animal
+         * @param {Animal} animal - Animal de estimação do cliente
+         * @param {boolean} statusInadimplencia - Status de pagamento (default: false)
+         */
+        class Cliente extends Pessoa {
+            constructor(nome, telefone, email, endereco, cpf, animal, statusInadimplencia = false) {
+                super(nome, telefone, email, endereco, cpf);
+                this.animal = animal;
+                this.statusInadimplencia = statusInadimplencia;
+            }
+        }
+
+        /**
+         * Classe Agendamento para gerenciar consultas
+         * @param {string} data - Data e hora da consulta
+         * @param {Medico} medico - Médico responsável
+         * @param {Cliente} cliente - Cliente atendido
+         * @param {number} valor - Valor da consulta
+         * @param {boolean} compareceu - Comparecimento (default: false)
+         * @param {boolean} concluido - Status de conclusão (default: false)
+         * @param {boolean} pago - Status de pagamento (default: false)
+         */
+        class Agendamento {
+            constructor(data, medico, cliente, valor, compareceu = false, concluido = false, pago = false) {
+                this.data = data;
+                this.medico = medico;
+                this.cliente = cliente;
+                this.compareceu = compareceu;
+                this.concluido = concluido;
+                this.valor = valor;
+                this.pago = pago;
+            }
+
+            // Método para confirmar o agendamento
+            agendar() {
+                return "Agendamento realizado com sucesso";
+            }
+
+            // Método para finalizar a consulta
+            finalizar() {
+                this.compareceu = true;
+                this.concluido = true;
+                this.pago = true;
+                return "Consulta concluída com sucesso";
+            }
+        }
+
+        // ============================================
+        // ARMAZENAMENTO DE DADOS
+        // ============================================
+        const animais = [];       // Lista de animais cadastrados
+        const clientes = [];      // Lista de clientes cadastrados
+        const medicos = [];       // Lista de médicos cadastrados
+        const agendamentos = [];  // Lista de agendamentos
+
+        // ============================================
+        // ELEMENTOS DO DOM
+        // ============================================
+        const animalForm = document.getElementById('animalForm');
+        const clienteForm = document.getElementById('clienteForm');
+        const medicoForm = document.getElementById('medicoForm');
+        const agendamentoForm = document.getElementById('agendamentoForm');
+        const resultadoDiv = document.getElementById('resultado');
+        const consultasTable = document.getElementById('consultasTable').querySelector('tbody');
+
+        // ============================================
+        // FUNÇÕES AUXILIARES
+        // ============================================
+
+        /**
+         * Atualiza todos os selects do sistema com os dados cadastrados
+         */
+        function atualizarSelects() {
+            const animalSelect = document.getElementById('clienteAnimal');
+            const medicoSelect = document.getElementById('agendamentoMedico');
+            const clienteSelect = document.getElementById('agendamentoCliente');
+
+            // Limpar selects
+            animalSelect.innerHTML = '<option value="">Selecione um animal cadastrado</option>';
+            medicoSelect.innerHTML = '<option value="">Selecione um médico</option>';
+            clienteSelect.innerHTML = '<option value="">Selecione um cliente</option>';
+
+            // Popular select de animais
+            animais.forEach((animal, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = animal.nome;
+                animalSelect.appendChild(option);
+            });
+
+            // Popular select de médicos
+            medicos.forEach((medico, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = medico.nome;
+                medicoSelect.appendChild(option);
+            });
+
+            // Popular select de clientes
+            clientes.forEach((cliente, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.textContent = cliente.nome;
+                clienteSelect.appendChild(option);
+            });
+        }
+
+        /**
+         * Atualiza a tabela de consultas com os agendamentos existentes
+         */
+        function atualizarTabelaConsultas() {
+            consultasTable.innerHTML = '';
+            
+            agendamentos.forEach((agendamento, index) => {
+                const row = document.createElement('tr');
+                
+                // Formata a data para exibição
+                const data = new Date(agendamento.data);
+                const dataFormatada = data.toLocaleString('pt-BR');
+                
+                // Determina o status da consulta
+                const status = agendamento.concluido ? 'Concluída' : 'Agendada';
+                
+                // Cria a linha da tabela
+                row.innerHTML = `
+                    <td>${dataFormatada}</td>
+                    <td>${agendamento.medico.nome}</td>
+                    <td>${agendamento.cliente.nome}</td>
+                    <td>${agendamento.cliente.animal.nome}</td>
+                    <td>R$ ${agendamento.valor.toFixed(2)}</td>
+                    <td>${status}</td>
+                    <td>
+                        ${!agendamento.concluido ? 
+                            `<button onclick="finalizarConsulta(${index})">Finalizar</button>` : 
+                            'Finalizada'}
+                    </td>
+                `;
+                
+                consultasTable.appendChild(row);
+            });
+        }
+
+        // ============================================
+        // FUNÇÕES GLOBAIS (disponíveis no escopo window)
+        // ============================================
+
+        /**
+         * Finaliza uma consulta específica
+         * @param {number} index - Índice do agendamento na lista
+         */
+        window.finalizarConsulta = function(index) {
+            const agendamento = agendamentos[index];
+            agendamento.finalizar();
+            atualizarTabelaConsultas();
+            
+            // Exibe mensagem de resultado
+            resultadoDiv.style.display = 'block';
+            resultadoDiv.innerHTML = `
+                <p>Consulta finalizada com sucesso!</p>
+                <p>O animal de nome ${agendamento.cliente.animal.nome}, dono de nome ${agendamento.cliente.nome}, 
+                concluiu uma consulta com o médico de nome ${agendamento.medico.nome}.</p>
+            `;
+        };
+
+        // ============================================
+        // EVENT LISTENERS (manipulação de formulários)
+        // ============================================
+
+        // Formulário de Animal
+        animalForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coleta dados do formulário
+            const nome = document.getElementById('animalNome').value;
+            const sexo = document.getElementById('animalSexo').value;
+            const peso = parseFloat(document.getElementById('animalPeso').value);
+            const especie = document.getElementById('animalEspecie').value;
+            const raca = document.getElementById('animalRaca').value;
+            const dataNascimento = document.getElementById('animalNascimento').value;
+            
+            // Cria novo animal
+            const animal = new Animal(nome, sexo, peso, especie, raca, dataNascimento);
+            animais.push(animal);
+            
+            // Feedback para o usuário
+            resultadoDiv.style.display = 'block';
+            resultadoDiv.textContent = `Animal ${nome} cadastrado com sucesso!`;
+            
+            // Limpa formulário e atualiza selects
+            animalForm.reset();
+            atualizarSelects();
+        });
+
+        // Formulário de Cliente
+        clienteForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coleta dados do formulário
+            const nome = document.getElementById('clienteNome').value;
+            const telefone = document.getElementById('clienteTelefone').value;
+            const email = document.getElementById('clienteEmail').value;
+            const endereco = document.getElementById('clienteEndereco').value;
+            const cpf = document.getElementById('clienteCPF').value;
+            const animalIndex = document.getElementById('clienteAnimal').value;
+            
+            // Valida seleção de animal
+            if (animalIndex === '') {
+                alert('Selecione um animal para o cliente');
+                return;
+            }
+            
+            // Cria novo cliente associado ao animal
+            const animal = animais[animalIndex];
+            const cliente = new Cliente(nome, telefone, email, endereco, cpf, animal);
+            clientes.push(cliente);
+            
+            // Feedback para o usuário
+            resultadoDiv.style.display = 'block';
+            resultadoDiv.textContent = `Cliente ${nome} cadastrado com sucesso!`;
+            
+            // Limpa formulário e atualiza selects
+            clienteForm.reset();
+            atualizarSelects();
+        });
+
+        // Formulário de Médico
+        medicoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coleta dados do formulário
+            const nome = document.getElementById('medicoNome').value;
+            const telefone = document.getElementById('medicoTelefone').value;
+            const email = document.getElementById('medicoEmail').value;
+            const endereco = document.getElementById('medicoEndereco').value;
+            const cpf = document.getElementById('medicoCPF').value;
+            const registro = document.getElementById('medicoRegistro').value;
+            const especialidade = document.getElementById('medicoEspecialidade').value;
+            const cargaHoraria = parseInt(document.getElementById('medicoCargaHoraria').value);
+            
+            // Cria novo médico
+            const medico = new Medico(nome, telefone, email, endereco, cpf, registro, especialidade, cargaHoraria);
+            medicos.push(medico);
+            
+            // Feedback para o usuário
+            resultadoDiv.style.display = 'block';
+            resultadoDiv.textContent = `Médico ${nome} cadastrado com sucesso!`;
+            
+            // Limpa formulário e atualiza selects
+            medicoForm.reset();
+            atualizarSelects();
+        });
+
+        // Formulário de Agendamento
+        agendamentoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Coleta dados do formulário
+            const data = document.getElementById('agendamentoData').value;
+            const medicoIndex = document.getElementById('agendamentoMedico').value;
+            const clienteIndex = document.getElementById('agendamentoCliente').value;
+            const valor = parseFloat(document.getElementById('agendamentoValor').value);
+            
+            // Valida seleção de médico e cliente
+            if (medicoIndex === '' || clienteIndex === '') {
+                alert('Selecione um médico e um cliente');
+                return;
+            }
+            
+            // Obtém médico e cliente selecionados
+            const medico = medicos[medicoIndex];
+            const cliente = clientes[clienteIndex];
+            
+            // Cria novo agendamento
+            const agendamento = new Agendamento(data, medico, cliente, valor);
+            agendamentos.push(agendamento);
+            
+            // Feedback para o usuário
+            resultadoDiv.style.display = 'block';
+            resultadoDiv.textContent = agendamento.agendar();
+            
+            // Limpa formulário e atualiza tabela
+            agendamentoForm.reset();
+            atualizarTabelaConsultas();
+        });
+
+        // ============================================
+        // INICIALIZAÇÃO DO SISTEMA
+        // ============================================
+        atualizarSelects();
+    </script>
+</body>
+</html>
